@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Melanie & Michael – 1st November 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Cinzel:wght@400;700;900&family=Cinzel+Decorative:wght@400;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cinzel+Decorative:wght@400;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   :root{
@@ -24,13 +24,14 @@
     overflow-x:hidden;
   }
 
-  /* ─── NAV ─── */
+  /* NAV */
   nav{
     position:fixed;top:0;width:100%;z-index:100;
     background:rgba(26,18,8,0.92);
     border-bottom:1px solid var(--gold-dark);
     display:flex;justify-content:center;gap:2rem;
     padding:0.7rem 1rem;backdrop-filter:blur(6px);
+    flex-wrap:wrap;
   }
   nav a{
     color:var(--gold-light);font-family:'Cinzel',serif;font-size:0.75rem;
@@ -39,7 +40,7 @@
   }
   nav a:hover{color:#fff}
 
-  /* ─── HERO ─── */
+  /* HERO */
   .hero{
     min-height:100vh;display:flex;flex-direction:column;
     align-items:center;justify-content:center;
@@ -50,20 +51,14 @@
     position:absolute;inset:0;
     background:radial-gradient(ellipse at 50% 60%, #2a1a05 0%, #0d0a04 70%);
   }
-  .rune-border{
-    position:absolute;inset:0;pointer-events:none;
-    display:flex;align-items:stretch;justify-content:stretch;
-  }
-  .rune-border svg{width:100%;height:100%;opacity:0.18}
   .hero-content{position:relative;z-index:2}
   .ravens{
     display:flex;justify-content:center;gap:4rem;
-    margin-bottom:1.5rem;font-size:3rem;
+    margin-bottom:1.5rem;
     animation:wingbeat 4s ease-in-out infinite;
   }
   @keyframes wingbeat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
   .raven{font-size:3.5rem;filter:drop-shadow(0 0 12px var(--gold-dark))}
-
   .hero h1{
     font-family:'Cinzel Decorative',serif;
     font-size:clamp(2.2rem,7vw,5rem);
@@ -95,12 +90,9 @@
     margin-top:1rem;
   }
   @keyframes pulse{0%,100%{opacity:0.4}50%{opacity:1}}
-  .divider{
-    color:var(--gold-dark);font-size:1.4rem;
-    letter-spacing:0.5em;margin:0.6rem 0;
-  }
+  .divider{color:var(--gold-dark);font-size:1.4rem;letter-spacing:0.5em;margin:0.6rem 0}
 
-  /* ─── SECTIONS ─── */
+  /* SECTIONS */
   section{max-width:900px;margin:0 auto;padding:5rem 2rem}
   .section-title{
     font-family:'Cinzel Decorative',serif;
@@ -117,17 +109,17 @@
     margin:0.8rem 0 2rem;
   }
   .hr-rune::before,.hr-rune::after{
-    content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,var(--gold-dark),transparent);
+    content:'';flex:1;height:1px;
+    background:linear-gradient(to right,transparent,var(--gold-dark),transparent);
   }
   .hr-rune span{color:var(--gold);font-size:1.2rem;flex-shrink:0}
 
-  /* ─── CARDS ─── */
+  /* CARDS */
   .card{
     background:rgba(42,26,5,0.7);
     border:1px solid var(--gold-dark);
     border-radius:4px;padding:1.8rem;
-    margin-bottom:1.5rem;
-    position:relative;
+    margin-bottom:1.5rem;position:relative;
   }
   .card::before{
     content:'';position:absolute;inset:3px;
@@ -142,7 +134,7 @@
   .card p{line-height:1.8;color:var(--parchment-dark);font-size:0.95rem}
   .card strong{color:var(--gold-light)}
 
-  /* ─── TIMELINE ─── */
+  /* TIMELINE */
   .timeline{position:relative;padding-left:2.5rem}
   .timeline::before{
     content:'';position:absolute;left:0.6rem;top:0;bottom:0;
@@ -162,10 +154,10 @@
   }
   .tl-desc{color:var(--parchment-dark);font-size:0.92rem;line-height:1.7}
 
-  /* ─── INFO GRID ─── */
+  /* INFO GRID */
   .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
 
-  /* ─── GETTING THERE ─── */
+  /* TABS */
   .transport-tabs{display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
   .tab-btn{
     background:none;border:1px solid var(--gold-dark);
@@ -181,7 +173,7 @@
   .tab-content{display:none}
   .tab-content.active{display:block}
 
-  /* ─── GUEST TRACKER ─── */
+  /* GUEST TRACKER */
   #tracker{background:rgba(10,6,2,0.6);border-top:1px solid var(--gold-dark);padding:5rem 0}
   .tracker-inner{max-width:900px;margin:0 auto;padding:0 2rem}
 
@@ -196,8 +188,7 @@
   }
   .stat-num{
     font-family:'Cinzel Decorative',serif;
-    font-size:2rem;color:var(--gold-light);
-    display:block;
+    font-size:2rem;color:var(--gold-light);display:block;
   }
   .stat-label{
     font-family:'Cinzel',serif;font-size:0.62rem;
@@ -205,16 +196,23 @@
     text-transform:uppercase;margin-top:0.2rem;
   }
 
-  .guest-controls{
-    display:flex;gap:0.7rem;margin-bottom:1.5rem;flex-wrap:wrap;align-items:center;
+  .add-guest-form{
+    display:grid;grid-template-columns:1fr 1fr 1fr 1fr;
+    gap:0.6rem;margin-bottom:1rem;align-items:end;
   }
-  .guest-controls input,.guest-controls select{
+  @media(max-width:700px){.add-guest-form{grid-template-columns:1fr 1fr}}
+  .form-label{
+    display:flex;flex-direction:column;gap:0.3rem;
+    font-family:'Cinzel',serif;font-size:0.65rem;
+    letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;
+  }
+  .form-label input,.form-label select{
     background:rgba(42,26,5,0.8);border:1px solid var(--gold-dark);
     color:var(--parchment);font-family:'IM Fell English',Georgia,serif;
-    padding:0.5rem 0.8rem;border-radius:2px;font-size:0.88rem;
-    flex:1;min-width:150px;
+    padding:0.45rem 0.7rem;border-radius:2px;font-size:0.88rem;width:100%;
   }
-  .guest-controls select option{background:#2a1a05}
+  .form-label select option{background:#2a1a05}
+
   .btn{
     background:var(--gold-dark);border:1px solid var(--gold);
     color:var(--parchment);font-family:'Cinzel',serif;
@@ -223,57 +221,23 @@
     transition:all 0.2s;white-space:nowrap;
   }
   .btn:hover{background:var(--gold);color:var(--ink)}
+  .btn:disabled{opacity:0.5;cursor:not-allowed}
+  .btn-ghost{background:rgba(42,26,5,0.8)}
   .btn-danger{background:rgba(139,26,26,0.5);border-color:var(--blood)}
   .btn-danger:hover{background:var(--blood);color:var(--parchment)}
 
-  .add-guest-form{
-    display:grid;grid-template-columns:1fr 1fr auto auto;
-    gap:0.6rem;margin-bottom:2rem;align-items:end;
+  .guest-controls{
+    display:flex;gap:0.7rem;margin-bottom:1.5rem;flex-wrap:wrap;align-items:center;
   }
-  @media(max-width:640px){.add-guest-form{grid-template-columns:1fr 1fr}}
-  .add-guest-form label{
-    display:flex;flex-direction:column;gap:0.3rem;
-    font-family:'Cinzel',serif;font-size:0.65rem;
-    letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;
-  }
-  .add-guest-form input,.add-guest-form select{
+  .guest-controls input,.guest-controls select{
     background:rgba(42,26,5,0.8);border:1px solid var(--gold-dark);
     color:var(--parchment);font-family:'IM Fell English',Georgia,serif;
-    padding:0.45rem 0.7rem;border-radius:2px;font-size:0.88rem;width:100%;
+    padding:0.5rem 0.8rem;border-radius:2px;font-size:0.88rem;
+    flex:1;min-width:140px;
   }
+  .guest-controls select option{background:#2a1a05}
 
-  /* ─── GUEST TABLE ─── */
-  .guest-table-wrap{overflow-x:auto}
-  table{width:100%;border-collapse:collapse;font-size:0.85rem}
-  thead tr{border-bottom:1px solid var(--gold-dark)}
-  th{
-    font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.15em;
-    color:var(--gold);text-transform:uppercase;padding:0.6rem 0.8rem;
-    text-align:left;
-  }
-  td{
-    padding:0.6rem 0.8rem;color:var(--parchment-dark);
-    border-bottom:1px solid rgba(201,150,58,0.1);vertical-align:middle;
-  }
-  tr:hover td{background:rgba(201,150,58,0.04)}
-
-  .badge{
-    display:inline-block;padding:0.15rem 0.5rem;
-    border-radius:2px;font-size:0.72rem;
-    font-family:'Cinzel',serif;letter-spacing:0.1em;
-  }
-  .badge-coming{background:rgba(15,110,86,0.3);border:1px solid #0f6e56;color:#5dcaa5}
-  .badge-declined{background:rgba(139,26,26,0.3);border:1px solid var(--blood);color:#e07070}
-  .badge-pending{background:rgba(138,75,11,0.3);border:1px solid #854f0b;color:#f0ae50}
-
-  .remove-btn{
-    background:none;border:none;cursor:pointer;
-    color:var(--stone-light);font-size:0.9rem;padding:0.2rem;
-    transition:color 0.2s;
-  }
-  .remove-btn:hover{color:var(--blood-light)}
-
-  /* ─── PROGRESS BAR ─── */
+  /* PROGRESS */
   .progress-wrap{margin-bottom:2rem}
   .progress-label{
     font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.15em;
@@ -285,11 +249,67 @@
     border:1px solid var(--gold-dark);border-radius:3px;overflow:hidden;
   }
   .progress-fill{
-    height:100%;background:linear-gradient(to right,var(--gold-dark),var(--gold-light));
+    height:100%;
+    background:linear-gradient(to right,var(--gold-dark),var(--gold-light));
     border-radius:3px;transition:width 0.5s ease;
   }
 
-  /* ─── FOOTER ─── */
+  /* TABLE */
+  .guest-table-wrap{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:0.85rem}
+  thead tr{border-bottom:1px solid var(--gold-dark)}
+  th{
+    font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.15em;
+    color:var(--gold);text-transform:uppercase;padding:0.6rem 0.8rem;text-align:left;
+  }
+  td{
+    padding:0.6rem 0.8rem;color:var(--parchment-dark);
+    border-bottom:1px solid rgba(201,150,58,0.1);vertical-align:middle;
+  }
+  tr:hover td{background:rgba(201,150,58,0.04)}
+
+  .status-select{
+    background:rgba(42,26,5,0.8);border:1px solid var(--gold-dark);
+    color:var(--parchment);font-size:0.78rem;
+    padding:0.2rem 0.4rem;border-radius:2px;cursor:pointer;
+    font-family:'IM Fell English',Georgia,serif;
+  }
+  .status-select option{background:#2a1a05}
+
+  .remove-btn{
+    background:none;border:none;cursor:pointer;
+    color:var(--stone-light);font-size:0.9rem;padding:0.2rem;
+    transition:color 0.2s;
+  }
+  .remove-btn:hover{color:var(--blood-light)}
+
+  /* BULK IMPORT */
+  .bulk-textarea{
+    width:100%;background:rgba(10,6,2,0.6);
+    border:1px solid var(--gold-dark);color:var(--parchment);
+    font-family:'IM Fell English',serif;padding:0.6rem;
+    border-radius:2px;resize:vertical;font-size:0.85rem;
+  }
+
+  /* SYNC STATUS */
+  .sync-status{
+    font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.12em;
+    text-transform:uppercase;padding:0.3rem 0.7rem;border-radius:2px;
+    display:inline-flex;align-items:center;gap:0.4rem;
+  }
+  .sync-dot{width:6px;height:6px;border-radius:50%;display:inline-block}
+  .sync-ok{color:#5dcaa5}.sync-ok .sync-dot{background:#5dcaa5}
+  .sync-loading{color:var(--gold)}.sync-loading .sync-dot{background:var(--gold);animation:pulse 1s infinite}
+  .sync-error{color:#e07070}.sync-error .sync-dot{background:#e07070}
+
+  /* SEP */
+  .sep{
+    text-align:center;padding:1rem 0 0;
+    font-size:1.8rem;letter-spacing:0.4em;
+    color:var(--gold-dark);opacity:0.5;
+  }
+
+  /* FOOTER */
   footer{
     text-align:center;padding:3rem 2rem;
     border-top:1px solid var(--gold-dark);
@@ -300,32 +320,16 @@
     letter-spacing:0.2em;color:var(--stone-light);
     text-transform:uppercase;margin:0.3rem 0;
   }
-  footer .footer-names{
+  .footer-names{
     font-family:'Cinzel Decorative',serif;font-size:1.2rem;
     color:var(--gold);letter-spacing:0.1em;margin-bottom:0.5rem;
-  }
-
-  /* ─── FLAME FLICKER ─── */
-  .flame{
-    display:inline-block;animation:flicker 1.5s ease-in-out infinite alternate;
-  }
-  @keyframes flicker{
-    0%{opacity:1;transform:scale(1) rotate(-1deg)}
-    100%{opacity:0.7;transform:scale(1.1) rotate(1deg)}
-  }
-
-  /* ─── SECTION SEPARATOR ─── */
-  .sep{
-    text-align:center;padding:1rem 0 0;
-    font-size:1.8rem;letter-spacing:0.4em;color:var(--gold-dark);
-    opacity:0.5;
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
+  <a href="#home">Home</a>
   <a href="#ceremony">The Ceremony</a>
   <a href="#getting-there">Getting There</a>
   <a href="#stay">Stay</a>
@@ -354,15 +358,14 @@
   <h2 class="section-title">The Saga Begins</h2>
   <div class="hr-rune"><span>ᚦ</span></div>
   <p class="section-subtitle">"Their saga shall be written at Rylands Farmhouse, Wilmslow"</p>
-
   <div class="timeline">
     <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-time">3:50 pm — Doors open</div>
-      <div class="tl-desc">Guests are welcomed. Take your places for the ceremony — guests should be seated and ready.</div>
+      <div class="tl-desc">Guests are welcomed. Take your places for the ceremony — all should be seated and ready before the hour strikes.</div>
     </div>
     <div class="tl-item">
-      <div class="tl-dot" style="background:var(--gold);"></div>
+      <div class="tl-dot" style="background:var(--gold)"></div>
       <div class="tl-time">4:00 pm — The Ceremony</div>
       <div class="tl-desc">Melanie &amp; Michael join their clans as one. Witness their binding oath before all who have gathered.</div>
     </div>
@@ -372,7 +375,6 @@
       <div class="tl-desc">Raise your horns! A night of feasting, fellowship, and revelry worthy of Valhalla itself.</div>
     </div>
   </div>
-
   <div class="card" style="margin-top:2rem;text-align:center">
     <p class="card-title" style="text-align:center">⚔ Viking Dress Encouraged ⚔</p>
     <p>The happy couple would greatly welcome you embracing their Viking theme — furs, braids, tunics, shields all welcome. Though your presence matters far more than your attire.</p>
@@ -385,7 +387,6 @@
 <section id="getting-there">
   <h2 class="section-title">Journeying to Rylands</h2>
   <div class="hr-rune"><span>ᚱ</span></div>
-
   <div class="card">
     <p class="card-title">📍 The Longhouse</p>
     <p><strong>Rylands Farmhouse</strong><br>
@@ -393,16 +394,14 @@
     <strong>Postcode: SK9 4LT</strong><br><br>
     Small road next left past The Honey Bee Pub, just off Altrincham Road (leading to bank house farm) — sharp left!</p>
   </div>
-
   <div class="transport-tabs">
-    <button class="tab-btn active" onclick="showTab('by-car')">By Longship (Car)</button>
-    <button class="tab-btn" onclick="showTab('by-train')">By Rail</button>
-    <button class="tab-btn" onclick="showTab('parking')">Parking</button>
+    <button class="tab-btn active" onclick="showTab(event,'by-car')">By Car</button>
+    <button class="tab-btn" onclick="showTab(event,'by-train')">By Train</button>
+    <button class="tab-btn" onclick="showTab(event,'parking')">Parking</button>
   </div>
-
   <div id="by-car" class="tab-content active">
     <div class="card">
-      <p>Around <strong>10 minutes from Manchester Airport</strong>. Follow the postcode <strong>SK9 4LT</strong> and look out for The Honey Bee Pub — take the small road to the left just after it. Sharp left toward bank house farm.</p>
+      <p>Around <strong>10 minutes from Manchester Airport</strong>. Follow postcode <strong>SK9 4LT</strong> and look out for The Honey Bee Pub — take the small road to the left just after it, sharp left toward bank house farm.</p>
     </div>
   </div>
   <div id="by-train" class="tab-content">
@@ -412,8 +411,8 @@
   </div>
   <div id="parking" class="tab-content">
     <div class="card">
-      <p>There are <strong>limited parking spaces</strong> at the venue. To help everyone arrive smoothly, we kindly ask guests to <strong>share cars</strong> where possible, or arrange taxis if staying nearby.<br><br>
-      Please liaise with <strong>Mel or Mike</strong> directly if you will be driving to the venue so they can coordinate spaces.</p>
+      <p>There are <strong>limited parking spaces</strong> at the venue. We kindly ask guests to <strong>share cars</strong> where possible, or arrange taxis if staying nearby.<br><br>
+      Please liaise with <strong>Mel or Mike</strong> directly if you will be driving so they can coordinate spaces.</p>
     </div>
   </div>
 </section>
@@ -424,7 +423,6 @@
 <section id="stay">
   <h2 class="section-title">Rest Your Head</h2>
   <div class="hr-rune"><span>ᚢ</span></div>
-
   <div class="info-grid">
     <div class="card">
       <p class="card-title">🏰 Rooms at Rylands</p>
@@ -439,7 +437,7 @@
     </div>
     <div class="card">
       <p class="card-title">🏨 The Merlin Hotel</p>
-      <p>Another nearby option for guests who prefer to stay close.<br><br>
+      <p>Another nearby option for guests.<br><br>
       <strong>5–9 Wilmslow Road, Cheshire, SK97QL</strong></p>
     </div>
   </div>
@@ -454,10 +452,19 @@
     <div class="hr-rune"><span>ᚷ</span></div>
     <p class="section-subtitle">Track your warriors — who answers the call?</p>
 
-    <!-- Stats -->
-    <div class="stats-row" id="stats"></div>
+    <div style="display:flex;justify-content:flex-end;margin-bottom:1rem">
+      <span class="sync-status sync-loading" id="sync-status">
+        <span class="sync-dot"></span> Connecting...
+      </span>
+    </div>
 
-    <!-- Progress -->
+    <div class="stats-row" id="stats">
+      <div class="stat-box"><span class="stat-num">—</span><div class="stat-label">Invited</div></div>
+      <div class="stat-box"><span class="stat-num" style="color:#5dcaa5">—</span><div class="stat-label">Coming</div></div>
+      <div class="stat-box"><span class="stat-num" style="color:#e07070">—</span><div class="stat-label">Declined</div></div>
+      <div class="stat-box"><span class="stat-num" style="color:#f0ae50">—</span><div class="stat-label">Awaiting</div></div>
+    </div>
+
     <div class="progress-wrap">
       <div class="progress-label">
         <span>Responses received</span>
@@ -468,52 +475,52 @@
       </div>
     </div>
 
-    <!-- Add Guest -->
-    <div class="add-guest-form" id="add-form">
-      <label>Guest name
+    <!-- Add guest form -->
+    <div class="add-guest-form">
+      <label class="form-label">Guest name
         <input type="text" id="new-name" placeholder="e.g. Bjorn the Brave" />
       </label>
-      <label>RSVP status
+      <label class="form-label">RSVP status
         <select id="new-status">
           <option value="pending">Pending</option>
           <option value="coming">Coming</option>
           <option value="declined">Declined</option>
         </select>
       </label>
-      <label>Dietary needs
+      <label class="form-label">Dietary needs
         <input type="text" id="new-dietary" placeholder="e.g. Vegetarian" />
       </label>
-      <label>Notes
+      <label class="form-label">Notes
         <input type="text" id="new-notes" placeholder="Optional" />
       </label>
     </div>
-    <div style="display:flex;gap:0.7rem;margin-bottom:2rem;flex-wrap:wrap">
-      <button class="btn" onclick="addGuest()">⚔ Add to the Roll</button>
-      <button class="btn" onclick="showImportForm()" style="background:rgba(42,26,5,0.8)">📜 Bulk Import</button>
+    <div style="display:flex;gap:0.7rem;margin-bottom:2rem;flex-wrap:wrap;align-items:center">
+      <button class="btn" id="add-btn" onclick="addGuest()">⚔ Add to the Roll</button>
+      <button class="btn btn-ghost" onclick="toggleImport()">📜 Bulk Import</button>
       <div style="flex:1"></div>
-      <div class="guest-controls" style="margin:0;flex-wrap:nowrap">
-        <select id="filter-status" onchange="renderTable()" style="min-width:120px">
+      <div class="guest-controls" style="margin:0">
+        <select id="filter-status" onchange="renderTable()">
           <option value="all">All warriors</option>
           <option value="coming">Coming</option>
           <option value="declined">Declined</option>
           <option value="pending">Pending</option>
         </select>
-        <input type="text" id="search-name" oninput="renderTable()" placeholder="Search..." style="min-width:130px" />
+        <input type="text" id="search-name" oninput="renderTable()" placeholder="Search by name..." />
       </div>
     </div>
 
-    <!-- Bulk Import -->
+    <!-- Bulk import -->
     <div id="import-area" style="display:none;margin-bottom:1.5rem">
       <div class="card">
         <p class="card-title">Bulk Import</p>
-        <p style="font-size:0.82rem;margin-bottom:0.7rem;color:var(--parchment-dark)">Paste names, one per line. Optionally add a comma then: coming / declined / pending</p>
-        <textarea id="bulk-text" rows="5"
-          style="width:100%;background:rgba(10,6,2,0.6);border:1px solid var(--gold-dark);color:var(--parchment);
-                 font-family:'IM Fell English',serif;padding:0.6rem;border-radius:2px;resize:vertical;font-size:0.85rem"
+        <p style="font-size:0.82rem;margin-bottom:0.7rem;color:var(--parchment-dark)">
+          One name per line. Optionally add a comma then: coming / declined / pending
+        </p>
+        <textarea class="bulk-textarea" id="bulk-text" rows="6"
           placeholder="Bjorn Ironside, coming&#10;Freya Svenson, pending&#10;Harald Bluetooth, declined"></textarea>
         <div style="display:flex;gap:0.7rem;margin-top:0.7rem">
           <button class="btn" onclick="bulkImport()">Import</button>
-          <button class="btn btn-danger" onclick="document.getElementById('import-area').style.display='none'">Cancel</button>
+          <button class="btn btn-danger" onclick="toggleImport()">Cancel</button>
         </div>
       </div>
     </div>
@@ -535,7 +542,7 @@
       </table>
     </div>
     <p id="empty-msg" style="text-align:center;color:var(--stone-light);font-style:italic;padding:2rem;display:none">
-      No warriors on the roll yet. Add some above!
+      No warriors on the roll yet. Add your guests above!
     </p>
   </div>
 </div>
@@ -550,131 +557,172 @@
   <div style="font-size:1.3rem;letter-spacing:0.5em;color:var(--gold-dark);margin-top:0.8rem;opacity:0.5">ᚠ ᚢ ᚦ ᚨ ᚱ ᚲ</div>
 </footer>
 
-<script>
-// ── Tab switching
-function showTab(id){
-  document.querySelectorAll('.tab-content').forEach(el=>el.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(el=>el.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  event.target.classList.add('active');
-}
+<!-- Firebase SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import {
+    getFirestore, collection, onSnapshot,
+    addDoc, updateDoc, deleteDoc, doc, serverTimestamp, query, orderBy
+  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// ── Guest data (stored in memory)
-let guests = JSON.parse(localStorage.getItem('mm_guests') || '[]');
-
-function save(){
-  try{localStorage.setItem('mm_guests',JSON.stringify(guests))}catch(e){}
-}
-
-function addGuest(){
-  const name = document.getElementById('new-name').value.trim();
-  if(!name) return;
-  guests.push({
-    id: Date.now(),
-    name,
-    status: document.getElementById('new-status').value,
-    dietary: document.getElementById('new-dietary').value.trim(),
-    notes: document.getElementById('new-notes').value.trim()
-  });
-  save();
-  document.getElementById('new-name').value='';
-  document.getElementById('new-dietary').value='';
-  document.getElementById('new-notes').value='';
-  renderTable(); updateStats();
-}
-
-function removeGuest(id){
-  guests=guests.filter(g=>g.id!==id);
-  save(); renderTable(); updateStats();
-}
-
-function changeStatus(id, val){
-  const g=guests.find(g=>g.id===id);
-  if(g){g.status=val; save(); renderTable(); updateStats();}
-}
-
-function showImportForm(){
-  const el=document.getElementById('import-area');
-  el.style.display=el.style.display==='none'?'block':'none';
-}
-
-function bulkImport(){
-  const lines=document.getElementById('bulk-text').value.trim().split('\n');
-  lines.forEach(line=>{
-    const [name,status]=(line+',pending').split(',').map(s=>s.trim());
-    if(!name) return;
-    const st=['coming','declined','pending'].includes(status)?status:'pending';
-    guests.push({id:Date.now()+Math.random(),name,status:st,dietary:'',notes:''});
-  });
-  save(); renderTable(); updateStats();
-  document.getElementById('import-area').style.display='none';
-  document.getElementById('bulk-text').value='';
-}
-
-function badgeHTML(status){
-  const map={
-    coming:'<span class="badge badge-coming">Coming</span>',
-    declined:'<span class="badge badge-declined">Declined</span>',
-    pending:'<span class="badge badge-pending">Pending</span>'
+  const firebaseConfig = {
+    apiKey: "AIzaSyBGnoVPO2JJI3WOiuhDJunY6Fze7P9ewp4",
+    authDomain: "viking-wedding.firebaseapp.com",
+    projectId: "viking-wedding",
+    storageBucket: "viking-wedding.firebasestorage.app",
+    messagingSenderId: "928033855568",
+    appId: "1:928033855568:web:0099586ab9a967eaf65955",
+    measurementId: "G-5DFML3DNEH"
   };
-  return map[status]||map.pending;
-}
 
-function renderTable(){
-  const filter=document.getElementById('filter-status').value;
-  const search=document.getElementById('search-name').value.toLowerCase();
-  let filtered=guests.filter(g=>{
-    const matchStatus=filter==='all'||g.status===filter;
-    const matchSearch=g.name.toLowerCase().includes(search);
-    return matchStatus&&matchSearch;
-  });
-  const tbody=document.getElementById('guest-tbody');
-  tbody.innerHTML='';
-  document.getElementById('empty-msg').style.display=filtered.length?'none':'block';
-  filtered.forEach((g,i)=>{
-    const tr=document.createElement('tr');
-    tr.innerHTML=`
-      <td style="color:var(--stone-light);font-size:0.78rem">${i+1}</td>
-      <td style="font-weight:500;color:var(--parchment)">${g.name}</td>
-      <td>
-        <select onchange="changeStatus(${g.id},this.value)"
-          style="background:rgba(42,26,5,0.8);border:1px solid var(--gold-dark);color:var(--parchment);
-                 font-size:0.78rem;padding:0.2rem 0.4rem;border-radius:2px;cursor:pointer">
-          <option value="coming" ${g.status==='coming'?'selected':''}>Coming</option>
-          <option value="declined" ${g.status==='declined'?'selected':''}>Declined</option>
-          <option value="pending" ${g.status==='pending'?'selected':''}>Pending</option>
-        </select>
-      </td>
-      <td style="color:var(--parchment-dark);font-size:0.82rem">${g.dietary||'—'}</td>
-      <td style="color:var(--parchment-dark);font-size:0.82rem">${g.notes||'—'}</td>
-      <td><button class="remove-btn" onclick="removeGuest(${g.id})" title="Remove">✕</button></td>
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const guestsCol = collection(db, "guests");
+
+  // Live guests array, kept in sync with Firestore
+  let guests = [];
+
+  // ── Real-time listener
+  const q = query(guestsCol, orderBy("createdAt", "asc"));
+  onSnapshot(q,
+    (snapshot) => {
+      guests = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+      setSyncStatus('ok');
+      renderTable();
+      updateStats();
+    },
+    (err) => {
+      console.error(err);
+      setSyncStatus('error');
+    }
+  );
+
+  // ── Sync indicator
+  function setSyncStatus(state) {
+    const el = document.getElementById('sync-status');
+    el.className = 'sync-status sync-' + state;
+    el.innerHTML = `<span class="sync-dot"></span> ${
+      state === 'ok' ? 'Live &amp; synced' :
+      state === 'loading' ? 'Connecting...' : 'Connection error'
+    }`;
+  }
+
+  // ── Add guest
+  window.addGuest = async function() {
+    const name = document.getElementById('new-name').value.trim();
+    if (!name) return;
+    const btn = document.getElementById('add-btn');
+    btn.disabled = true;
+    try {
+      await addDoc(guestsCol, {
+        name,
+        status: document.getElementById('new-status').value,
+        dietary: document.getElementById('new-dietary').value.trim(),
+        notes: document.getElementById('new-notes').value.trim(),
+        createdAt: serverTimestamp()
+      });
+      document.getElementById('new-name').value = '';
+      document.getElementById('new-dietary').value = '';
+      document.getElementById('new-notes').value = '';
+      document.getElementById('new-status').value = 'pending';
+    } catch(e){ console.error(e); }
+    btn.disabled = false;
+  };
+
+  // ── Remove guest
+  window.removeGuest = async function(id) {
+    try { await deleteDoc(doc(db, "guests", id)); } catch(e){ console.error(e); }
+  };
+
+  // ── Change status
+  window.changeStatus = async function(id, val) {
+    try { await updateDoc(doc(db, "guests", id), { status: val }); } catch(e){ console.error(e); }
+  };
+
+  // ── Bulk import
+  window.bulkImport = async function() {
+    const lines = document.getElementById('bulk-text').value.trim().split('\n');
+    const validStatuses = ['coming','declined','pending'];
+    for (const line of lines) {
+      const parts = line.split(',').map(s => s.trim());
+      const name = parts[0];
+      if (!name) continue;
+      const status = validStatuses.includes(parts[1]) ? parts[1] : 'pending';
+      await addDoc(guestsCol, { name, status, dietary: '', notes: '', createdAt: serverTimestamp() });
+    }
+    document.getElementById('import-area').style.display = 'none';
+    document.getElementById('bulk-text').value = '';
+  };
+
+  // ── Render table
+  window.renderTable = function() {
+    const filter = document.getElementById('filter-status').value;
+    const search = document.getElementById('search-name').value.toLowerCase();
+    const filtered = guests.filter(g => {
+      const matchStatus = filter === 'all' || g.status === filter;
+      const matchSearch = g.name.toLowerCase().includes(search);
+      return matchStatus && matchSearch;
+    });
+    const tbody = document.getElementById('guest-tbody');
+    tbody.innerHTML = '';
+    document.getElementById('empty-msg').style.display = filtered.length ? 'none' : 'block';
+    filtered.forEach((g, i) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td style="color:var(--stone-light);font-size:0.78rem">${i + 1}</td>
+        <td style="font-weight:500;color:var(--parchment)">${g.name}</td>
+        <td>
+          <select class="status-select" onchange="changeStatus('${g.id}',this.value)">
+            <option value="coming" ${g.status==='coming'?'selected':''}>Coming</option>
+            <option value="declined" ${g.status==='declined'?'selected':''}>Declined</option>
+            <option value="pending" ${g.status==='pending'?'selected':''}>Pending</option>
+          </select>
+        </td>
+        <td style="color:var(--parchment-dark);font-size:0.82rem">${g.dietary || '—'}</td>
+        <td style="color:var(--parchment-dark);font-size:0.82rem">${g.notes || '—'}</td>
+        <td><button class="remove-btn" onclick="removeGuest('${g.id}')" title="Remove">✕</button></td>
+      `;
+      tbody.appendChild(tr);
+    });
+  };
+
+  // ── Update stats
+  window.updateStats = function() {
+    const coming  = guests.filter(g => g.status === 'coming').length;
+    const declined= guests.filter(g => g.status === 'declined').length;
+    const pending = guests.filter(g => g.status === 'pending').length;
+    const total   = guests.length;
+    document.getElementById('stats').innerHTML = `
+      <div class="stat-box"><span class="stat-num">${total}</span><div class="stat-label">Invited</div></div>
+      <div class="stat-box"><span class="stat-num" style="color:#5dcaa5">${coming}</span><div class="stat-label">Coming</div></div>
+      <div class="stat-box"><span class="stat-num" style="color:#e07070">${declined}</span><div class="stat-label">Declined</div></div>
+      <div class="stat-box"><span class="stat-num" style="color:#f0ae50">${pending}</span><div class="stat-label">Awaiting</div></div>
     `;
-    tbody.appendChild(tr);
+    const responded = coming + declined;
+    const pct = total ? Math.round((responded / total) * 100) : 0;
+    document.getElementById('progress-pct').textContent = pct + '%';
+    document.getElementById('progress-fill').style.width = pct + '%';
+  };
+
+  // Enter key on name field
+  document.getElementById('new-name').addEventListener('keydown', e => {
+    if (e.key === 'Enter') window.addGuest();
   });
-}
-
-function updateStats(){
-  const coming=guests.filter(g=>g.status==='coming').length;
-  const declined=guests.filter(g=>g.status==='declined').length;
-  const pending=guests.filter(g=>g.status==='pending').length;
-  const total=guests.length;
-  document.getElementById('stats').innerHTML=`
-    <div class="stat-box"><span class="stat-num">${total}</span><div class="stat-label">Invited</div></div>
-    <div class="stat-box"><span class="stat-num" style="color:#5dcaa5">${coming}</span><div class="stat-label">Coming</div></div>
-    <div class="stat-box"><span class="stat-num" style="color:#e07070">${declined}</span><div class="stat-label">Declined</div></div>
-    <div class="stat-box"><span class="stat-num" style="color:#f0ae50">${pending}</span><div class="stat-label">Awaiting</div></div>
-  `;
-  const responded=coming+declined;
-  const pct=total?Math.round((responded/total)*100):0;
-  document.getElementById('progress-pct').textContent=pct+'%';
-  document.getElementById('progress-fill').style.width=pct+'%';
-}
-
-// Enter key in name field
-document.getElementById('new-name').addEventListener('keydown',e=>{if(e.key==='Enter')addGuest()});
-
-// Init
-renderTable(); updateStats();
 </script>
+
+<script>
+  // Non-Firebase UI helpers (must stay as regular script)
+  function showTab(e, id) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    e.target.classList.add('active');
+  }
+  function toggleImport() {
+    const el = document.getElementById('import-area');
+    el.style.display = el.style.display === 'none' ? 'block' : 'none';
+  }
+</script>
+
 </body>
 </html>
