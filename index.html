@@ -644,7 +644,12 @@
   onSnapshot(songsQ,
     (snapshot) => {
       songs = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
-      renderSongs();
+      // Defer render until DOM is guaranteed to be ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => window.renderSongs());
+      } else {
+        window.renderSongs();
+      }
     },
     (err) => { console.error(err); }
   );
@@ -676,25 +681,29 @@
 
   // ── Render songs
   window.renderSongs = function() {
-    const search = (document.getElementById('song-search') || {value:''}).value.toLowerCase();
+    const searchEl = document.getElementById('song-search');
+    const tbody = document.getElementById('songs-tbody');
+    const emptyMsg = document.getElementById('songs-empty');
+    if (!tbody || !emptyMsg) return;
+
+    const search = searchEl ? searchEl.value.toLowerCase() : '';
     const filtered = songs.filter(s =>
       s.title.toLowerCase().includes(search) ||
       (s.artist || '').toLowerCase().includes(search) ||
       (s.requester || '').toLowerCase().includes(search)
     );
-    const tbody = document.getElementById('songs-tbody');
-    if (!tbody) return;
+
     tbody.innerHTML = '';
-    document.getElementById('songs-empty').style.display = filtered.length ? 'none' : 'block';
+    emptyMsg.style.display = filtered.length ? 'none' : 'block';
+
     filtered.forEach((s, i) => {
       const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td style="color:var(--stone-light);font-size:0.78rem">${i + 1}</td>
-        <td style="font-weight:500;color:var(--parchment)">${s.title}</td>
-        <td style="color:var(--parchment-dark);font-size:0.88rem">${s.artist || '—'}</td>
-        <td style="color:var(--parchment-dark);font-size:0.82rem">${s.requester || '—'}</td>
-        <td><button class="remove-btn" onclick="removeSong('${s.id}')" title="Remove">&#10005;</button></td>
-      `;
+      tr.innerHTML =
+        '<td style="color:var(--stone-light);font-size:0.78rem">' + (i + 1) + '</td>' +
+        '<td style="font-weight:500;color:var(--parchment)">' + s.title + '</td>' +
+        '<td style="color:var(--parchment-dark);font-size:0.88rem">' + (s.artist || '—') + '</td>' +
+        '<td style="color:var(--parchment-dark);font-size:0.82rem">' + (s.requester || '—') + '</td>' +
+        '<td><button class="remove-btn" onclick="removeSong('' + s.id + '')" title="Remove">✕</button></td>';
       tbody.appendChild(tr);
     });
   };
