@@ -309,6 +309,19 @@
     color:var(--gold-dark);opacity:0.5;
   }
 
+  /* DECORATIVE SVG ELEMENTS */
+  .deco-svg{display:block;opacity:0.18;pointer-events:none}
+  .deco-svg-bright{display:block;opacity:0.28;pointer-events:none}
+  .deco-row{display:flex;justify-content:center;align-items:center;gap:3rem;padding:1.5rem 0;flex-wrap:wrap}
+  .deco-row-sm{display:flex;justify-content:center;align-items:center;gap:2rem;padding:0.8rem 0;flex-wrap:wrap}
+  .section-deco{text-align:center;padding:0.5rem 0 2rem;opacity:0.22}
+  .hero-deco-row{display:flex;justify-content:center;gap:5rem;margin-bottom:1rem;opacity:0.25}
+  .corner-raven{position:absolute;opacity:0.12}
+  .floating-axe{animation:float-axe 6s ease-in-out infinite}
+  @keyframes float-axe{0%,100%{transform:rotate(-5deg) translateY(0)}50%{transform:rotate(5deg) translateY(-6px)}}
+  .floating-ship{animation:float-ship 8s ease-in-out infinite}
+  @keyframes float-ship{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
   /* FOOTER */
   footer{
     text-align:center;padding:3rem 2rem;
@@ -333,6 +346,7 @@
   <a href="#ceremony">The Ceremony</a>
   <a href="#getting-there">Getting There</a>
   <a href="#stay">Stay</a>
+  <a href="#surprise">Surprise</a>
   <a href="#inspiration">Theme &amp; Attire</a>
   <a href="#songs">Song Requests</a>
   <a href="#tracker">Guest Tracker</a>
@@ -351,6 +365,33 @@
     <p class="hero-date">Sunday · 1st November · 2026</p>
     <p class="hero-venue">Rylands Farmhouse, Wilmslow</p>
     <div class="divider" style="font-size:1rem;color:var(--stone-light)">By oath and fire · by feast and fellowship</div>
+    <div style="display:flex;justify-content:center;align-items:center;gap:3rem;margin-top:1.8rem;opacity:0.45">
+      <svg width="55" height="55" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 38 C6 30 10 18 20 14 C16 20 18 26 22 28 C18 26 14 30 16 38 C12 36 10 42 8 38Z" fill="#c9963a"/>
+        <path d="M20 14 C26 8 36 6 42 10 C38 8 34 12 32 18 C36 12 44 12 46 18 C42 14 36 16 34 22 C32 16 26 16 22 20 C22 16 20 14 20 14Z" fill="#c9963a"/>
+        <path d="M34 22 C38 24 40 30 36 36 C34 30 28 28 22 28 C26 24 30 22 34 22Z" fill="#e8c56a"/>
+        <path d="M36 36 C34 40 30 44 24 44 C20 44 16 42 16 38 C20 40 26 40 28 36 C30 40 34 40 36 36Z" fill="#c9963a"/>
+        <circle cx="40" cy="12" r="2" fill="#e8c56a"/>
+        <path d="M42 10 L50 6 L48 12 L44 11Z" fill="#c9963a"/>
+      </svg>
+      <svg width="50" height="60" viewBox="0 0 55 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M27 4 L50 16 L50 34 C50 50 38 60 27 63 C16 60 5 50 5 34 L5 16 Z" fill="none" stroke="#c9963a" stroke-width="1.5"/>
+        <path d="M27 4 L48 15 L48 33 C48 48 37 57 27 60 C17 57 7 48 7 33 L7 15 Z" fill="none" stroke="#c9963a" stroke-width="0.5" opacity="0.5"/>
+        <circle cx="27" cy="32" r="10" fill="none" stroke="#e8c56a" stroke-width="1"/>
+        <line x1="27" y1="4" x2="27" y2="63" stroke="#c9963a" stroke-width="0.8" opacity="0.6"/>
+        <line x1="5" y1="24" x2="50" y2="24" stroke="#c9963a" stroke-width="0.8" opacity="0.6"/>
+        <line x1="6" y1="40" x2="49" y2="40" stroke="#c9963a" stroke-width="0.6" opacity="0.4"/>
+        <circle cx="27" cy="32" r="4" fill="#c9963a" opacity="0.7"/>
+      </svg>
+      <svg width="55" height="55" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform:scaleX(-1)">
+        <path d="M8 38 C6 30 10 18 20 14 C16 20 18 26 22 28 C18 26 14 30 16 38 C12 36 10 42 8 38Z" fill="#c9963a"/>
+        <path d="M20 14 C26 8 36 6 42 10 C38 8 34 12 32 18 C36 12 44 12 46 18 C42 14 36 16 34 22 C32 16 26 16 22 20 C22 16 20 14 20 14Z" fill="#c9963a"/>
+        <path d="M34 22 C38 24 40 30 36 36 C34 30 28 28 22 28 C26 24 30 22 34 22Z" fill="#e8c56a"/>
+        <path d="M36 36 C34 40 30 44 24 44 C20 44 16 42 16 38 C20 40 26 40 28 36 C30 40 34 40 36 36Z" fill="#c9963a"/>
+        <circle cx="40" cy="12" r="2" fill="#e8c56a"/>
+        <path d="M42 10 L50 6 L48 12 L44 11Z" fill="#c9963a"/>
+      </svg>
+    </div>
     <p class="scroll-hint">↓ scroll to learn more ↓</p>
   </div>
 </div>
@@ -370,6 +411,11 @@
       <div class="tl-dot" style="background:var(--gold)"></div>
       <div class="tl-time">4:00 pm — The Ceremony</div>
       <div class="tl-desc">Melanie &amp; Michael join their clans as one. Witness their binding oath before all who have gathered.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--blood);border-color:#e07070;box-shadow:0 0 8px rgba(192,57,43,0.5)"></div>
+      <div class="tl-time" style="color:#e07070">??? — Surprise Entertainment</div>
+      <div class="tl-desc">Something special awaits between the ceremony and the evening celebrations. All will be revealed on the night!</div>
     </div>
     <div class="tl-item">
       <div class="tl-dot"></div>
@@ -393,6 +439,27 @@
 </section>
 
 <div class="sep">ᚠ ᚢ ᚦ ᚨ ᚱ ᚲ</div>
+<div style="text-align:center;padding:1rem 0 0.5rem;opacity:0.22">
+  <div class="floating-ship" style="display:inline-block">
+    <svg width="340" height="110" viewBox="0 0 340 110" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline-block">
+      <path d="M25 78 C65 78 90 65 110 60 L230 60 C250 65 270 78 315 78" stroke="#c9963a" stroke-width="1.5" fill="none"/>
+      <path d="M110 60 C120 35 138 22 170 20 C202 22 220 35 230 60" stroke="#c9963a" stroke-width="1.2" fill="none"/>
+      <line x1="170" y1="20" x2="170" y2="60" stroke="#c9963a" stroke-width="1.2"/>
+      <path d="M170 20 L135 40 L170 46 L205 40 Z" fill="none" stroke="#e8c56a" stroke-width="0.9"/>
+      <path d="M170 20 L152 32 L170 36 L188 32 Z" fill="#c9963a" opacity="0.45"/>
+      <line x1="170" y1="20" x2="285" y2="32" stroke="#c9963a" stroke-width="0.8" opacity="0.5"/>
+      <line x1="285" y1="32" x2="228" y2="58" stroke="#c9963a" stroke-width="0.8" opacity="0.5"/>
+      <path d="M292 60 C304 54 318 57 322 63 C316 61 308 63 305 67 C299 61 294 61 292 60Z" fill="#c9963a" opacity="0.7"/>
+      <circle cx="125" cy="74" r="7" fill="none" stroke="#c9963a" stroke-width="0.9"/>
+      <circle cx="148" cy="74" r="7" fill="none" stroke="#c9963a" stroke-width="0.9"/>
+      <circle cx="170" cy="74" r="7" fill="none" stroke="#c9963a" stroke-width="0.9"/>
+      <circle cx="192" cy="74" r="7" fill="none" stroke="#c9963a" stroke-width="0.9"/>
+      <circle cx="215" cy="74" r="7" fill="none" stroke="#c9963a" stroke-width="0.9"/>
+      <path d="M25 86 Q85 95 170 92 Q255 89 315 86 Q255 98 170 100 Q85 102 25 86Z" fill="#c9963a" opacity="0.12"/>
+      <path d="M15 91 Q85 88 170 91 Q255 94 320 88" stroke="#c9963a" stroke-width="0.6" fill="none" opacity="0.3"/>
+    </svg>
+  </div>
+</div>
 
 <!-- GETTING THERE -->
 <section id="getting-there">
@@ -455,8 +522,76 @@
 </section>
 
 <div class="sep">ᚠ ᚢ ᚦ ᚨ ᚱ ᚲ</div>
+<div style="display:flex;justify-content:center;align-items:center;gap:2.5rem;padding:1rem 0 0.5rem;opacity:0.22">
+  <div class="floating-axe"><svg width="45" height="65" viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="23" y="20" width="4" height="45" rx="2" fill="#c9963a"/>
+        <path d="M27 22 C35 14 46 12 47 20 C48 28 38 32 27 30 Z" fill="#c9963a"/>
+        <path d="M27 22 C34 16 43 15 44 21" stroke="#e8c56a" stroke-width="0.7" fill="none"/>
+        <path d="M23 24 C16 16 6 16 5 24 C4 30 12 34 23 32 Z" fill="#c9963a" opacity="0.75"/>
+        <path d="M8 20 C10 26 16 30 23 30" stroke="#e8c56a" stroke-width="0.5" fill="none"/>
+      </svg></div>
+  <svg width="50" height="60" viewBox="0 0 55 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M27 4 L50 16 L50 34 C50 50 38 60 27 63 C16 60 5 50 5 34 L5 16 Z" fill="none" stroke="#c9963a" stroke-width="1.5"/>
+        <path d="M27 4 L48 15 L48 33 C48 48 37 57 27 60 C17 57 7 48 7 33 L7 15 Z" fill="none" stroke="#c9963a" stroke-width="0.5" opacity="0.5"/>
+        <circle cx="27" cy="32" r="10" fill="none" stroke="#e8c56a" stroke-width="1"/>
+        <line x1="27" y1="4" x2="27" y2="63" stroke="#c9963a" stroke-width="0.8" opacity="0.6"/>
+        <line x1="5" y1="24" x2="50" y2="24" stroke="#c9963a" stroke-width="0.8" opacity="0.6"/>
+        <circle cx="27" cy="32" r="4" fill="#c9963a" opacity="0.7"/>
+      </svg>
+  <div class="floating-axe" style="animation-delay:1s;transform:scaleX(-1)"><svg width="45" height="65" viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="23" y="20" width="4" height="45" rx="2" fill="#c9963a"/>
+        <path d="M27 22 C35 14 46 12 47 20 C48 28 38 32 27 30 Z" fill="#c9963a"/>
+        <path d="M27 22 C34 16 43 15 44 21" stroke="#e8c56a" stroke-width="0.7" fill="none"/>
+        <path d="M23 24 C16 16 6 16 5 24 C4 30 12 34 23 32 Z" fill="#c9963a" opacity="0.75"/>
+        <path d="M8 20 C10 26 16 30 23 30" stroke="#e8c56a" stroke-width="0.5" fill="none"/>
+      </svg></div>
+</div>
 
-<div class="sep">&#5792; &#5794; &#5798; &#5800; &#5801; &#5802;</div>
+<!-- SURPRISE ENTERTAINMENT -->
+<div id="surprise" style="padding:5rem 0">
+  <div class="tracker-inner">
+    <h2 class="section-title">A Surprise Awaits...</h2>
+    <div class="hr-rune"><span>ᚹ</span></div>
+    <p class="section-subtitle">Between the ceremony and the evening, something special has been arranged</p>
+
+    <div style="text-align:center;margin-bottom:2.5rem">
+      <div style="display:inline-block;position:relative;padding:2.5rem 3rem;border:1px solid var(--gold-dark);border-radius:4px;background:rgba(42,26,5,0.5)">
+        <div style="position:absolute;top:-1px;left:-1px;right:-1px;bottom:-1px;border:1px solid rgba(201,150,58,0.15);border-radius:2px;pointer-events:none"></div>
+        <div style="font-size:3.5rem;margin-bottom:1rem;filter:drop-shadow(0 0 12px rgba(201,150,58,0.4))">⚔ ☽ ⚔</div>
+        <p style="font-family:'Cinzel Decorative',serif;font-size:clamp(1rem,3vw,1.5rem);color:var(--gold-light);letter-spacing:0.1em;margin-bottom:0.8rem">The Secret of the Longhouse</p>
+        <p style="color:var(--parchment-dark);font-style:italic;line-height:1.9;font-size:0.95rem;max-width:480px">
+          Melanie and Michael have arranged a very special surprise to be unveiled between the ceremony and the evening feast.<br><br>
+          The secret shall be kept until the day itself — all that can be said is that it will be a moment worth remembering.<br><br>
+          <span style="color:var(--gold);font-style:normal;font-family:'Cinzel',serif;font-size:0.8rem;letter-spacing:0.15em">PREPARE TO BE AMAZED.</span>
+        </p>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem">
+      <div class="card" style="padding:1.3rem;text-align:center">
+        <div style="font-size:2rem;margin-bottom:0.5rem">🎭</div>
+        <p class="card-title" style="font-size:0.75rem;text-align:center">Entertainment</p>
+        <p style="font-size:0.85rem">Something truly unique has been planned. Not your ordinary wedding entertainment.</p>
+      </div>
+      <div class="card" style="padding:1.3rem;text-align:center">
+        <div style="font-size:2rem;margin-bottom:0.5rem">📸</div>
+        <p class="card-title" style="font-size:0.75rem;text-align:center">Capture the Moment</p>
+        <p style="font-size:0.85rem">Make sure your phone is charged — you will want to remember this.</p>
+      </div>
+      <div class="card" style="padding:1.3rem;text-align:center">
+        <div style="font-size:2rem;margin-bottom:0.5rem">🤫</div>
+        <p class="card-title" style="font-size:0.75rem;text-align:center">Keep the Secret</p>
+        <p style="font-size:0.85rem">If you already know what it is — shh! Let everyone share in the surprise.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="display:flex;justify-content:center;align-items:center;gap:2.5rem;padding:0.5rem 0;opacity:0.2">
+  <svg width="45" height="65" viewBox="0 0 50 70" fill="none"><rect x="23" y="20" width="4" height="45" rx="2" fill="#c9963a"/><path d="M27 22 C35 14 46 12 47 20 C48 28 38 32 27 30 Z" fill="#c9963a"/><path d="M23 24 C16 16 6 16 5 24 C4 30 12 34 23 32 Z" fill="#c9963a" opacity="0.75"/></svg>
+  <svg width="50" height="60" viewBox="0 0 55 65" fill="none"><path d="M27 4 L50 16 L50 34 C50 50 38 60 27 63 C16 60 5 50 5 34 L5 16 Z" fill="none" stroke="#c9963a" stroke-width="1.5"/><circle cx="27" cy="32" r="10" fill="none" stroke="#e8c56a" stroke-width="1"/><line x1="27" y1="4" x2="27" y2="63" stroke="#c9963a" stroke-width="0.8" opacity="0.6"/><line x1="5" y1="24" x2="50" y2="24" stroke="#c9963a" stroke-width="0.8" opacity="0.6"/><circle cx="27" cy="32" r="4" fill="#c9963a" opacity="0.7"/></svg>
+  <svg width="45" height="65" viewBox="0 0 50 70" fill="none" style="transform:scaleX(-1)"><rect x="23" y="20" width="4" height="45" rx="2" fill="#c9963a"/><path d="M27 22 C35 14 46 12 47 20 C48 28 38 32 27 30 Z" fill="#c9963a"/><path d="M23 24 C16 16 6 16 5 24 C4 30 12 34 23 32 Z" fill="#c9963a" opacity="0.75"/></svg>
+</div>
 
 <!-- INSPIRATION -->
 <div id="inspiration" style="padding:5rem 0">
@@ -559,6 +694,22 @@
   </div>
 </div>
 
+<div style="display:flex;justify-content:center;align-items:center;gap:4rem;padding:1rem 0 0.5rem;opacity:0.22"><svg width="55" height="55" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 38 C6 30 10 18 20 14 C16 20 18 26 22 28 C18 26 14 30 16 38 C12 36 10 42 8 38Z" fill="#c9963a"/>
+        <path d="M20 14 C26 8 36 6 42 10 C38 8 34 12 32 18 C36 12 44 12 46 18 C42 14 36 16 34 22 C32 16 26 16 22 20 C22 16 20 14 20 14Z" fill="#c9963a"/>
+        <path d="M34 22 C38 24 40 30 36 36 C34 30 28 28 22 28 C26 24 30 22 34 22Z" fill="#e8c56a"/>
+        <path d="M36 36 C34 40 30 44 24 44 C20 44 16 42 16 38 C20 40 26 40 28 36 C30 40 34 40 36 36Z" fill="#c9963a"/>
+        <circle cx="40" cy="12" r="2" fill="#e8c56a"/>
+        <path d="M42 10 L50 6 L48 12 L44 11Z" fill="#c9963a"/>
+      </svg><svg width="55" style="transform:scaleX(-1)" height="55" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 38 C6 30 10 18 20 14 C16 20 18 26 22 28 C18 26 14 30 16 38 C12 36 10 42 8 38Z" fill="#c9963a"/>
+        <path d="M20 14 C26 8 36 6 42 10 C38 8 34 12 32 18 C36 12 44 12 46 18 C42 14 36 16 34 22 C32 16 26 16 22 20 C22 16 20 14 20 14Z" fill="#c9963a"/>
+        <path d="M34 22 C38 24 40 30 36 36 C34 30 28 28 22 28 C26 24 30 22 34 22Z" fill="#e8c56a"/>
+        <path d="M36 36 C34 40 30 44 24 44 C20 44 16 42 16 38 C20 40 26 40 28 36 C30 40 34 40 36 36Z" fill="#c9963a"/>
+        <circle cx="40" cy="12" r="2" fill="#e8c56a"/>
+        <path d="M42 10 L50 6 L48 12 L44 11Z" fill="#c9963a"/>
+      </svg></div>
+
 <!-- SONG REQUESTS -->
 <div id="songs" style="background:rgba(10,6,2,0.4);border-top:1px solid var(--gold-dark);padding:5rem 0">
   <div class="tracker-inner">
@@ -605,7 +756,6 @@
   </div>
 </div>
 
-<div class="sep">&#5792; &#5794; &#5798; &#5800; &#5801; &#5802;</div>
 
 <!-- GUEST TRACKER -->
 <div id="tracker">
@@ -708,6 +858,7 @@
     </p>
   </div>
 </div>
+
 
 <!-- FOOTER -->
 <footer>
