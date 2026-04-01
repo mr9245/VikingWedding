@@ -679,36 +679,49 @@
     try { await deleteDoc(doc(db, "songs", id)); } catch(e){ console.error(e); }
   };
 
-  // ── Render songs
+  // -- Render songs
   window.renderSongs = function() {
-    const searchEl = document.getElementById('song-search');
-    const tbody = document.getElementById('songs-tbody');
-    const emptyMsg = document.getElementById('songs-empty');
+    var searchEl = document.getElementById('song-search');
+    var tbody = document.getElementById('songs-tbody');
+    var emptyMsg = document.getElementById('songs-empty');
     if (!tbody || !emptyMsg) return;
-
-    const search = searchEl ? searchEl.value.toLowerCase() : '';
-    const filtered = songs.filter(s =>
-      s.title.toLowerCase().includes(search) ||
-      (s.artist || '').toLowerCase().includes(search) ||
-      (s.requester || '').toLowerCase().includes(search)
-    );
-
+    var search = searchEl ? searchEl.value.toLowerCase() : '';
+    var filtered = songs.filter(function(s) {
+      return s.title.toLowerCase().indexOf(search) > -1 ||
+        (s.artist || '').toLowerCase().indexOf(search) > -1 ||
+        (s.requester || '').toLowerCase().indexOf(search) > -1;
+    });
     tbody.innerHTML = '';
     emptyMsg.style.display = filtered.length ? 'none' : 'block';
-
-    filtered.forEach((s, i) => {
-      const tr = document.createElement('tr');
-      tr.innerHTML =
-        '<td style="color:var(--stone-light);font-size:0.78rem">' + (i + 1) + '</td>' +
-        '<td style="font-weight:500;color:var(--parchment)">' + s.title + '</td>' +
-        '<td style="color:var(--parchment-dark);font-size:0.88rem">' + (s.artist || '—') + '</td>' +
-        '<td style="color:var(--parchment-dark);font-size:0.82rem">' + (s.requester || '—') + '</td>' +
-        '<td><button class="remove-btn" onclick="removeSong('' + s.id + '')" title="Remove">✕</button></td>';
+    filtered.forEach(function(s, i) {
+      var tr = document.createElement('tr');
+      var tdNum = document.createElement('td');
+      tdNum.style.cssText = 'color:var(--stone-light);font-size:0.78rem';
+      tdNum.textContent = i + 1;
+      var tdTitle = document.createElement('td');
+      tdTitle.style.cssText = 'font-weight:500;color:var(--parchment)';
+      tdTitle.textContent = s.title;
+      var tdArtist = document.createElement('td');
+      tdArtist.style.cssText = 'color:var(--parchment-dark);font-size:0.88rem';
+      tdArtist.textContent = s.artist || '—';
+      var tdReq = document.createElement('td');
+      tdReq.style.cssText = 'color:var(--parchment-dark);font-size:0.82rem';
+      tdReq.textContent = s.requester || '—';
+      var tdBtn = document.createElement('td');
+      var btn = document.createElement('button');
+      btn.className = 'remove-btn';
+      btn.title = 'Remove';
+      btn.textContent = '✕';
+      btn.dataset.id = s.id;
+      btn.addEventListener('click', function() { window.removeSong(this.dataset.id); });
+      tdBtn.appendChild(btn);
+      tr.appendChild(tdNum); tr.appendChild(tdTitle); tr.appendChild(tdArtist);
+      tr.appendChild(tdReq); tr.appendChild(tdBtn);
       tbody.appendChild(tr);
     });
   };
 
-  // Enter on song title field
+    // Enter on song title field
   document.getElementById('song-title').addEventListener('keydown', e => {
     if (e.key === 'Enter') window.addSong();
   });
@@ -788,39 +801,66 @@
     document.getElementById('bulk-text').value = '';
   };
 
-  // ── Render table
+  // -- Render table
   window.renderTable = function() {
-    const filter = document.getElementById('filter-status').value;
-    const search = document.getElementById('search-name').value.toLowerCase();
-    const filtered = guests.filter(g => {
-      const matchStatus = filter === 'all' || g.status === filter;
-      const matchSearch = g.name.toLowerCase().includes(search);
-      return matchStatus && matchSearch;
+    var filter = document.getElementById('filter-status').value;
+    var search = document.getElementById('search-name').value.toLowerCase();
+    var filtered = guests.filter(function(g) {
+      return (filter === 'all' || g.status === filter) &&
+        g.name.toLowerCase().indexOf(search) > -1;
     });
-    const tbody = document.getElementById('guest-tbody');
+    var tbody = document.getElementById('guest-tbody');
     tbody.innerHTML = '';
     document.getElementById('empty-msg').style.display = filtered.length ? 'none' : 'block';
-    filtered.forEach((g, i) => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td style="color:var(--stone-light);font-size:0.78rem">${i + 1}</td>
-        <td style="font-weight:500;color:var(--parchment)">${g.name}</td>
-        <td>
-          <select class="status-select" onchange="changeStatus('${g.id}',this.value)">
-            <option value="coming" ${g.status==='coming'?'selected':''}>Coming</option>
-            <option value="declined" ${g.status==='declined'?'selected':''}>Declined</option>
-            <option value="pending" ${g.status==='pending'?'selected':''}>Pending</option>
-          </select>
-        </td>
-        <td style="color:var(--parchment-dark);font-size:0.82rem">${g.dietary || '—'}</td>
-        <td style="color:var(--parchment-dark);font-size:0.82rem">${g.notes || '—'}</td>
-        <td><button class="remove-btn" onclick="removeGuest('${g.id}')" title="Remove">✕</button></td>
-      `;
+    filtered.forEach(function(g, i) {
+      var tr = document.createElement('tr');
+
+      var tdNum = document.createElement('td');
+      tdNum.style.cssText = 'color:var(--stone-light);font-size:0.78rem';
+      tdNum.textContent = i + 1;
+
+      var tdName = document.createElement('td');
+      tdName.style.cssText = 'font-weight:500;color:var(--parchment)';
+      tdName.textContent = g.name;
+
+      var tdStatus = document.createElement('td');
+      var sel = document.createElement('select');
+      sel.className = 'status-select';
+      ['coming','declined','pending'].forEach(function(val) {
+        var opt = document.createElement('option');
+        opt.value = val;
+        opt.textContent = val.charAt(0).toUpperCase() + val.slice(1);
+        if (g.status === val) opt.selected = true;
+        sel.appendChild(opt);
+      });
+      sel.dataset.id = g.id;
+      sel.addEventListener('change', function() { window.changeStatus(this.dataset.id, this.value); });
+      tdStatus.appendChild(sel);
+
+      var tdDiet = document.createElement('td');
+      tdDiet.style.cssText = 'color:var(--parchment-dark);font-size:0.82rem';
+      tdDiet.textContent = g.dietary || '—';
+
+      var tdNotes = document.createElement('td');
+      tdNotes.style.cssText = 'color:var(--parchment-dark);font-size:0.82rem';
+      tdNotes.textContent = g.notes || '—';
+
+      var tdBtn = document.createElement('td');
+      var btn = document.createElement('button');
+      btn.className = 'remove-btn';
+      btn.title = 'Remove';
+      btn.textContent = '✕';
+      btn.dataset.id = g.id;
+      btn.addEventListener('click', function() { window.removeGuest(this.dataset.id); });
+      tdBtn.appendChild(btn);
+
+      tr.appendChild(tdNum); tr.appendChild(tdName); tr.appendChild(tdStatus);
+      tr.appendChild(tdDiet); tr.appendChild(tdNotes); tr.appendChild(tdBtn);
       tbody.appendChild(tr);
     });
   };
 
-  // ── Update stats
+    // ── Update stats
   window.updateStats = function() {
     const coming  = guests.filter(g => g.status === 'coming').length;
     const declined= guests.filter(g => g.status === 'declined').length;
