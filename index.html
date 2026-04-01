@@ -333,6 +333,7 @@
   <a href="#ceremony">The Ceremony</a>
   <a href="#getting-there">Getting There</a>
   <a href="#stay">Stay</a>
+  <a href="#songs">Song Requests</a>
   <a href="#tracker">Guest Tracker</a>
 </nav>
 
@@ -453,6 +454,54 @@
 </section>
 
 <div class="sep">ᚠ ᚢ ᚦ ᚨ ᚱ ᚲ</div>
+
+<!-- SONG REQUESTS -->
+<div id="songs" style="background:rgba(10,6,2,0.4);border-top:1px solid var(--gold-dark);padding:5rem 0">
+  <div class="tracker-inner">
+    <h2 class="section-title">The Bard's Scroll</h2>
+    <div class="hr-rune"><span>&#x14C5;</span></div>
+    <p class="section-subtitle">Request a song for the DJ &mdash; what shall be played at the feast?</p>
+
+    <div class="add-guest-form" style="grid-template-columns:1fr 1fr 1fr;align-items:end">
+      <label class="form-label">Song title
+        <input type="text" id="song-title" placeholder="e.g. Immigrant Song" />
+      </label>
+      <label class="form-label">Artist
+        <input type="text" id="song-artist" placeholder="e.g. Led Zeppelin" />
+      </label>
+      <label class="form-label">Your name
+        <input type="text" id="song-requester" placeholder="e.g. Bjorn" />
+      </label>
+    </div>
+    <div style="display:flex;gap:0.7rem;margin-bottom:2.5rem;flex-wrap:wrap;align-items:center">
+      <button class="btn" id="song-btn" onclick="addSong()">&#127925; Add to the Scroll</button>
+      <div style="flex:1"></div>
+      <input type="text" id="song-search" oninput="renderSongs()" placeholder="Search songs..."
+        style="background:rgba(42,26,5,0.8);border:1px solid var(--gold-dark);color:var(--parchment);
+               font-family:'IM Fell English',Georgia,serif;padding:0.5rem 0.8rem;border-radius:2px;font-size:0.88rem;min-width:180px" />
+    </div>
+
+    <div class="guest-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Song</th>
+            <th>Artist</th>
+            <th>Requested by</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="songs-tbody"></tbody>
+      </table>
+    </div>
+    <p id="songs-empty" style="text-align:center;color:var(--stone-light);font-style:italic;padding:2rem;display:none">
+      The scroll is empty &mdash; be the first to request a song!
+    </p>
+  </div>
+</div>
+
+<div class="sep">&#5792; &#5794; &#5798; &#5800; &#5801; &#5802;</div>
 
 <!-- GUEST TRACKER -->
 <div id="tracker">
@@ -587,6 +636,73 @@
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
   const guestsCol = collection(db, "guests");
+  const songsCol = collection(db, "songs");
+
+  // ── Songs real-time listener
+  let songs = [];
+  const songsQ = query(songsCol, orderBy("createdAt", "asc"));
+  onSnapshot(songsQ,
+    (snapshot) => {
+      songs = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+      renderSongs();
+    },
+    (err) => { console.error(err); }
+  );
+
+  // ── Add song
+  window.addSong = async function() {
+    const title = document.getElementById('song-title').value.trim();
+    if (!title) return;
+    const btn = document.getElementById('song-btn');
+    btn.disabled = true;
+    try {
+      await addDoc(songsCol, {
+        title,
+        artist: document.getElementById('song-artist').value.trim(),
+        requester: document.getElementById('song-requester').value.trim(),
+        createdAt: serverTimestamp()
+      });
+      document.getElementById('song-title').value = '';
+      document.getElementById('song-artist').value = '';
+      document.getElementById('song-requester').value = '';
+    } catch(e){ console.error(e); }
+    btn.disabled = false;
+  };
+
+  // ── Remove song
+  window.removeSong = async function(id) {
+    try { await deleteDoc(doc(db, "songs", id)); } catch(e){ console.error(e); }
+  };
+
+  // ── Render songs
+  window.renderSongs = function() {
+    const search = (document.getElementById('song-search') || {value:''}).value.toLowerCase();
+    const filtered = songs.filter(s =>
+      s.title.toLowerCase().includes(search) ||
+      (s.artist || '').toLowerCase().includes(search) ||
+      (s.requester || '').toLowerCase().includes(search)
+    );
+    const tbody = document.getElementById('songs-tbody');
+    if (!tbody) return;
+    tbody.innerHTML = '';
+    document.getElementById('songs-empty').style.display = filtered.length ? 'none' : 'block';
+    filtered.forEach((s, i) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td style="color:var(--stone-light);font-size:0.78rem">${i + 1}</td>
+        <td style="font-weight:500;color:var(--parchment)">${s.title}</td>
+        <td style="color:var(--parchment-dark);font-size:0.88rem">${s.artist || '—'}</td>
+        <td style="color:var(--parchment-dark);font-size:0.82rem">${s.requester || '—'}</td>
+        <td><button class="remove-btn" onclick="removeSong('${s.id}')" title="Remove">&#10005;</button></td>
+      `;
+      tbody.appendChild(tr);
+    });
+  };
+
+  // Enter on song title field
+  document.getElementById('song-title').addEventListener('keydown', e => {
+    if (e.key === 'Enter') window.addSong();
+  });
 
   // Live guests array, kept in sync with Firestore
   let guests = [];
